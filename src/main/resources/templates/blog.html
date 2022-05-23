@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Блог</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h1>Главная страница. Анонсы статей:</h1>
+<ul>
+<div th:each="el : ${posts}">
+     <h3 th:text="${el.title}"/>
+     <p th:text="${el.anons}"/>
+     <a th:href="'/blog' + ${el.id}" class="btn btn-warning">Читать</a>
+</div>
+</ul>
+<ul>
+    <li sec:authorize="hasRole('CLIENT')"><a href="/client">клиент</a></li>
+    <li sec:authorize="hasRole('ADMIN')"><a href="/admin">администратор</a></li>
+</ul>
+
+</body>
+</html>

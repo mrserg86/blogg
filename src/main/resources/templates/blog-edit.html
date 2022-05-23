@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование статьи</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h1>Редактирование статьи</h1>
+<div th:each="el : ${post}">
+    <form method="post">
+        <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
+        <input type="text" th:value="{el.anons}" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
+        <textarea name="fullText" placeholder="Введите полный текст статьи" class="form-control" th:value="{el.fullText}"/><br>
+        <button type="submit class" class="btn btn-success">Редактировать</button>
+    </form>
+</div>
+
+<ul>
+    <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 1</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 2</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 3</a></li>
+    <li sec:authorize="hasRole('CLIENT')"><a href="/client">клиент</a></li>
+    <li sec:authorize="hasRole('ADMIN')"><a href="/admin">администратор</a></li>
+</ul>
+
+</body>
+</html>

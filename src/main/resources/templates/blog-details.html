@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h1>Статья</h1>
+<div th:each="el : ${post}">
+  <h3 th:text="${el.title}"/>
+  <p th:text="${el.fullText}"/>
+  <p th:text="'Просмотры: ' + ${el.views}"/>
+  <a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+  <a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
+</div>
+<ul>
+  <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 1</a></li>
+  <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 2</a></li>
+  <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 3</a></li>
+  <li sec:authorize="hasRole('CLIENT')"><a href="/client">клиент</a></li>
+  <li sec:authorize="hasRole('ADMIN')"><a href="/admin">администратор</a></li>
+</ul>
+
+</body>
+</html>
