@@ -11,8 +11,8 @@
 <div th:each="el : ${post}">
     <form method="post">
         <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
-        <input type="text" th:value="{el.anons}" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
-        <textarea name="fullText" placeholder="Введите полный текст статьи" class="form-control" th:value="{el.fullText}"/><br>
+        <input type="text" th:value="${el.anons}" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
+        <textarea name="fullText" placeholder="Введите полный текст статьи" class="form-control" th:value="${el.fullText}"></textarea><br>
         <button type="submit class" class="btn btn-success">Редактировать</button>
     </form>
 </div>
