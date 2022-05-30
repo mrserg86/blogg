@@ -13,6 +13,7 @@
      <h3 th:text="${el.title}"/>
      <p th:text="${el.anons}"/>
      <a th:href="'/blog' + ${el.id}" class="btn btn-warning">Читать</a>
+     <a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
 </div>
 </ul>
 <ul>
