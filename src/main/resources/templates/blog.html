@@ -7,6 +7,8 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
+<h1>Вы зашли как</h1>
+<p th:text="${Username}"/>
 <h1>Главная страница. Анонсы статей:</h1>
 <ul>
 <div th:each="el : ${posts}">
@@ -14,6 +16,7 @@
      <p th:text="${el.anons}"/>
      <a th:href="'/blog' + ${el.id}" class="btn btn-warning">Читать</a>
      <a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+     <a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
 </div>
 </ul>
 <ul>

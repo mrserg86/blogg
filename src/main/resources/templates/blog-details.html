@@ -9,6 +9,8 @@
 <h1>Статья</h1>
 <div th:each="el : ${post}">
   <h3 th:text="${el.title}"/>
+  <h4>автор статьи:</h4>
+  <h4 th:text="${el.userName}"/>
   <p th:text="${el.fullText}"/>
   <a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
   <a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>

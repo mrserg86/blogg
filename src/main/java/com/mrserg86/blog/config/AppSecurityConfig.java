@@ -22,9 +22,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("user1").password(passwordEncoder().encode("password1")).roles()
                 .and()
-                .withUser("user2").password(passwordEncoder().encode("password2")).roles("WRITEE")
+                .withUser("user2").password(passwordEncoder().encode("password2")).roles("WRITER")
                 .and()
-                .withUser("user3").password(passwordEncoder().encode("password3")).roles("ADMIN");
+                .withUser("user3").password(passwordEncoder().encode("password3")).roles("ADMIN")
+                .and()
+                .withUser("Алиса").password(passwordEncoder().encode("123")).roles("WRITER");
     }
 
     @Override
@@ -33,7 +35,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/blog").authenticated()
-                .antMatchers("/client").hasRole("CLIENT")
+                .antMatchers("/blog/add").hasRole("WRITER")
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and().logout().logoutSuccessUrl("/")

@@ -12,8 +12,23 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, anons, fullText;
+    private String title, anons, fullText, userName;
     private int views;
+
+    public Post(String title, String anons, String fullText, String userName) {
+        this.title = title;
+        this.anons = anons;
+        this.fullText = fullText;
+        this.userName = userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
 
     public void setId(Long id) {
         this.id = id;
