@@ -6,22 +6,25 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
+
+<h4>вы зашли как:</h4>
+<div sec:authentication="name"></div>
+
 <h1>Статья</h1>
 <div th:each="el : ${post}">
   <h3 th:text="${el.title}"/>
+
   <h4>автор статьи:</h4>
   <h4 th:text="${el.userName}"/>
+
   <p th:text="${el.fullText}"/>
-  <a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+
+  <p sec:if="${el.userName==Username}"><a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a></p>
   <a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
+
+  <p th:text="${Username}"/>
+
 </div>
-<ul>
-  <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 1</a></li>
-  <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 2</a></li>
-  <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 3</a></li>
-  <li sec:authorize="hasRole('CLIENT')"><a href="/client">клиент</a></li>
-  <li sec:authorize="hasRole('ADMIN')"><a href="/admin">администратор</a></li>
-</ul>
 
 </body>
 </html>

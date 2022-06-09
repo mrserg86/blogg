@@ -76,6 +76,18 @@ public class AppController {
         ArrayList<Post> res = new ArrayList<>();
         post.ifPresent(res::add);
         model.addAttribute("post", res);
+
+        Object principal = SecurityContextHolder. getContext(). getAuthentication(). getPrincipal();
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails)principal). getUsername();
+            model.addAttribute("Username", username);
+            userName = username;
+        } else {
+            String username = principal. toString();
+            model.addAttribute("Username", username);
+            userName = username;
+        }
+
         return "blog-details";
     }
 
