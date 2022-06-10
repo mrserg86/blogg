@@ -36,6 +36,7 @@ public class AppController {
 
     @Autowired
     private PostRepository postRepository;
+    
     public String userName;
 
     @GetMapping("/")

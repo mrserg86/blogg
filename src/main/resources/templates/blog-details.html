@@ -19,10 +19,10 @@
 
   <p th:text="${el.fullText}"/>
 
-  <p sec:if="${el.userName==Username}"><a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a></p>
-  <a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
-
-  <p th:text="${Username}"/>
+  <p th:if="${el.userName.equals(Username)}"><a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a></p>
+  <p th:if="${el.userName.equals(Username)}"><a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a></p>
+  <p sec:authorize="hasRole('ADMIN')"><a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a></p>
+  <p sec:authorize="hasRole('ADMIN')"><a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a></p>
 
 </div>
 

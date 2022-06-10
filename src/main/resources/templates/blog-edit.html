@@ -17,13 +17,5 @@
     </form>
 </div>
 
-<ul>
-    <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 1</a></li>
-    <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 2</a></li>
-    <li sec:authorize="isAuthenticated()"><a href="/authenticated">Анонс 3</a></li>
-    <li sec:authorize="hasRole('CLIENT')"><a href="/client">клиент</a></li>
-    <li sec:authorize="hasRole('ADMIN')"><a href="/admin">администратор</a></li>
-</ul>
-
 </body>
 </html>

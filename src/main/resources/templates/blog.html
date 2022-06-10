@@ -15,13 +15,9 @@
      <h3 th:text="${el.title}"/>
      <p th:text="${el.anons}"/>
      <a th:href="'/blog' + ${el.id}" class="btn btn-warning">Читать</a>
-     <a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
-     <a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
+    <p th:if="${el.userName.equals(Username)}"><a th:href="'/blog' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a></p>
+    <p th:if="${el.userName.equals(Username)}"><a th:href="'/blog' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a></p>
 </div>
-</ul>
-<ul>
-    <li sec:authorize="hasRole('CLIENT')"><a href="/client">клиент</a></li>
-    <li sec:authorize="hasRole('ADMIN')"><a href="/admin">администратор</a></li>
 </ul>
 
 </body>
